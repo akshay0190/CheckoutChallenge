@@ -1,0 +1,27 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Cart</title>
+</head>
+<body>
+<div id="wrapper">
+  <div id="container">
+
+    <div id="info">
+      <img id="product" src="http://enwaara.se/codepen/product.png"/>
+      <p>Activity Bracelet Surge</p>
+      <p>Black</p>
+      <div id="price">
+        <h2>€ 200</h2>
+      </div>
+    </div>
+    <div>
+      <form th:action="@{/checkout}">
+        <button type="submit">Purchase</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
