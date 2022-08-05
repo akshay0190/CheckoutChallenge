@@ -1,0 +1,47 @@
+test_custom_policy_ecs = {
+                "Version": "2012-10-17",
+                "Statement": [
+                {
+                "Effect": "Allow",
+                "Action": [
+                "ecs:*"
+                ],
+                "Condition": {
+                    "ArnEquals": {
+                    "ecs:cluster": "arn:aws:ecs:eu-west-1:615166286193:cluster/anl-vip-dev-input-filesplitter"
+                }
+                },
+                "Resource": [
+                "arn:aws:ecs:eu-west-1:615166286193:task-definition/anl-vip-dev-input-filesplitter:*"
+                ]
+                }
+                ]
+            }
+        
+        custom_policy_document = _iam.PolicyDocument.from_json(test_custom_policy_ecs)
+        new_inline_policy = _iam.Policy(
+            self, 
+            "MyNewPolicy"
+            ,document=custom_policy_document)
+        filesplitter_function.role.attach_inline_policy(new_inline_policy)
+
+
+        policy_document_pass_role = {
+            "Version": "2012-10-17",
+            "Statement": [{
+            "Effect": "Allow",
+                "Action": [
+                    "iam:GetRole",
+                    "iam:PassRole"
+                ],
+                "Resource": "arn:aws:iam::615166286193:role/anl-vip-dev-csv-files*"
+            }]
+        }
+
+        custom_policy_document_for_pass_role = _iam.PolicyDocument.from_json(policy_document_pass_role)
+        new_pass_role_policy = _iam.Policy(
+            self, 
+            "PassRolePolicyForLambdaECS",
+            document=custom_policy_document_for_pass_role
+            )
+        filesplitter_function.role.attach_inline_policy(new_pass_role_policy)
