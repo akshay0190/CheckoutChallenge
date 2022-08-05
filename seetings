@@ -1,0 +1,26 @@
+import os
+
+ENVIRONMENT = os.environ.get("P_ENVIRONMENT")
+LOG_LEVEL = os.environ.get("LOG_LEVEL", 'INFO')
+
+#sns_topic_arn = os.environ.get("P_SNS_TOPIC_ARN")
+#secret_manager_arn = os.environ.get("P_SECRET_MANAGER_ARN")
+log_group_name_consumer = os.environ.get("P_LOG_GROUP_NAME")
+#ms_team_webhook_url = os.environ.get("P_MS_TEAM_WEBHOOK_URL")
+#request_author_email = os.environ.get("P_REQUEST_AUTHOR")
+#request_table_names = os.environ.get("P_REQUEST_TABLE_NAMES")
+request_payload_region = os.environ.get("P_REQUEST_PAYLOAD_REGION", 'eu-west-1')
+#request_jira_number = os.environ.get("REQUEST_JIRA_NUMBER")
+ecr_repository_name = os.environ.get("P_ECR_REPOSITORY_NAME")
+source_bucket = os.environ.get("P_SOURCE_BUCKET")
+target_bucket = os.environ.get("P_TARGET_BUCKET")
+kms_key = os.environ.get("P_KMS_KEY")
+#orcl_scripts_dir = "resources/parameter_pensions/orcl_scripts/"
+
+#msteams_status_color_code_failed = '#FF0000'
+#msteams_status_color_code_success = '#00ff08'
+
+# msteams_message_title = 'On jira request ' + request_jira_number + ' status report of parameter table script execution in ' + ENVIRONMENT + ' environment'
+#msteams_message_title = log_group_name_consumer
+#msteams_message_summary = "Execution report of ECS task [" + log_group_name_consumer + "]"
+
